@@ -1,17 +1,13 @@
-import { Button } from '@mui/material';
+// import { Button } from '@mui/material';
 import './App.css';
-
+import Home from './Pages/Home/Home';
+import './index.css';
 function App() {
   return (
     <>
-      <h1 className='h-1 text-2xl text-red-500'>Bite Rush</h1>
-      <Button
-        className=''
-        size='small'
-        variant='contained'
-        color='primary'>
-        Hello MUI
-      </Button>
+      <h1>this is main app</h1>
+      <div className='text-[var(--primary)] text-3xl'>Hello</div>
+      <Home></Home>
     </>
   );
 }

@@ -1,9 +1,12 @@
-import App from '../App';
+import { Outlet } from 'react-router-dom';
+// import App from '../App';
+import Navbar from '../Componennts/Navbar/Navbar';
 
 const Main = () => {
   return (
-    <div>
-      <App></App>
+    <div className=' lg:px-52 py-2'>
+      <Navbar></Navbar>
+      <Outlet></Outlet>
     </div>
   );
 };
