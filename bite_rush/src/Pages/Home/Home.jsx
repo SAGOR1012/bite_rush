@@ -1,4 +1,5 @@
 import FoodCarousel from '../../Componennts/Carousel/FoodCarousel';
+import FoodMenu from '../../Componennts/Categories/FoodMenu';
 import Search_box from '../../Componennts/Search_box/Search_box';
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
         <h3 className='text-2xl font-bold text-gray-700 p-5'>Menu </h3>
         {/* Food Search  */}
         <Search_box></Search_box>
+        <FoodMenu></FoodMenu>
       </div>
     </div>
   );

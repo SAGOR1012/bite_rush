@@ -5,7 +5,7 @@ const Navbar = ({ cartCount = 0, onCartClick }) => {
   const navItems = [{ name: 'Track Order', path: '/track' }];
 
   return (
-    <nav className='sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm'>
+    <nav className='sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm rounded-2xl mb-5'>
       <div className='max-w-screen-full mx-auto px-5 h-16 flex items-center justify-between'>
         {/* Logo */}
         <Link
