@@ -120,7 +120,7 @@ const FoodMenu = () => {
         {/* Category Buttons */}
         <div className='overflow-x-auto mb-8 scrollbar-hide mt-5'>
           <div className='flex gap-3 w-max pb-2'>
-            {categories.map((item) => (
+            {categories?.map((item) => (
               <button
                 key={item.name}
                 onClick={() => setActiveCategory(item.name)}

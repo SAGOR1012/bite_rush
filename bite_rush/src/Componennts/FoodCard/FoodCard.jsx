@@ -1,25 +1,38 @@
+// Import motion from framer-motion
+import { motion } from 'framer-motion';
 // Import the Plus icon from react-icons library
 import { FaPlus } from 'react-icons/fa';
 
-const FoodCard = ({ food }) => {
+const FoodCard = ({ food, index }) => {
   return (
-    // Main card container
-    <div
-      key={food.id}
-      className='bg-white rounded-3xl overflow-hidden shadow hover:shadow-xl transition'>
+    // Main card container wrapped with motion
+    <motion.div
+      className='bg-white rounded-3xl overflow-hidden shadow hover:shadow-xl transition'
+      // Hover effect matching your previous context
+      whileHover={{ y: -5, scale: 1.02 }}>
       {/* Image section  */}
       <div className='relative'>
-        {/* Food item image */}
-        <img
-          src={food.image}
-          alt={food.name}
-          className='h-48 w-full object-cover'
-        />
+        <motion.div
+          // Key is required for AnimatePresence to track items
+          key={food.id}
+          // Entrance / Exit animations
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 20, opacity: 0 }}
+          // Stagger delay based on the index prop
+          transition={{ delay: index * 0.05, duration: 0.4 }}>
+          {/* Food item image */}
+          <img
+            src={food.image}
+            alt={food.name}
+            className='h-48 w-full object-cover'
+          />
 
-        {/* Discount badge positioned at top-left corner */}
-        <span className='absolute top-3 left-3 bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full'>
-          {food.discount}
-        </span>
+          {/* Discount badge positioned at top-left corner */}
+          <span className='absolute top-3 left-3 bg-pink-600 text-white text-xs font-bold px-3 py-1 rounded-full'>
+            {food.discount}
+          </span>
+        </motion.div>
       </div>
 
       {/* Content section and pricing */}
@@ -43,13 +56,16 @@ const FoodCard = ({ food }) => {
             <p className='text-gray-400 line-through'>৳{food.oldPrice}</p>
           </div>
 
-          {/* Add to cart button  */}
-          <button className='w-12 h-12 rounded-2xl bg-[var(--primary)] hover:bg-orange-600 text-white flex justify-center items-center transition'>
+          {/* Add to cart button with motion effect */}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className='w-12 h-12 rounded-2xl bg-[var(--primary)] text-white flex items-center justify-center transition'>
             <FaPlus />
-          </button>
+          </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -25,3 +25,4 @@
 ## Admin Dashboard
 
 ![Admin Dashboard](./images/admin_dashboard.png)
+#use farmer motion for apply animation

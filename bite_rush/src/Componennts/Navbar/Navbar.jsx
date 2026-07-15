@@ -2,7 +2,12 @@ import { NavLink, Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = ({ cartCount = 0, onCartClick }) => {
-  const navItems = [{ name: 'Track Order', path: '/track' }];
+  const navItems = [
+    { name: 'Track Order', path: '/track' },
+    { name: 'Cart', path: '/cart' },
+    { name: 'About', path: '/about' },
+    { name: 'Order Table', path: '/orderTable' },
+  ];
 
   return (
     <nav className='sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-sm rounded-2xl mb-5'>

@@ -1,12 +1,14 @@
 import { Outlet } from 'react-router-dom';
 // import App from '../App';
 import Navbar from '../Componennts/Navbar/Navbar';
+import Footer from '../Componennts/Footer/Footer';
 
 const Main = () => {
   return (
-    <div className=' lg:px-52 py-2'>
+    <div className=' lg:px-64 py-2'>
       <Navbar></Navbar>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };
