@@ -13,43 +13,10 @@ import {
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const initialCartItems = [
-  {
-    id: 1,
-    name: 'Chicken Biryani',
-    image: 'https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=300',
-    price: 100,
-    qty: 1,
-    description: 'Authentic Hyderabadi biryani with aromatic spices',
-  },
-  {
-    id: 2,
-    name: 'French Fries',
-    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300',
-    price: 60,
-    qty: 1,
-    description: 'Crispy golden fries with special seasoning',
-  },
-  {
-    id: 3,
-    name: 'Mango Lassi',
-    image: 'https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=300',
-    price: 70,
-    qty: 1,
-    description: 'Creamy mango yogurt drink',
-  },
-  {
-    id: 4,
-    name: 'Chocolate Brownie',
-    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=300',
-    price: 100,
-    qty: 1,
-    description: 'Warm chocolate brownie with fudge sauce',
-  },
-];
+const CartDrawer = ({ cartItems = [], setCartItems }) => {
+  console.log('Drawer:', cartItems);
+  // const [cartItems, setCartItems] = useState(initialCartItems);
 
-const CartDrawer = () => {
-  const [cartItems, setCartItems] = useState(initialCartItems);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
   const updateQuantity = (id, delta) => {
@@ -201,17 +168,7 @@ const CartDrawer = () => {
               <span className='font-medium'>৳{subtotal}</span>
             </div>
 
-            <div className='flex justify-between text-gray-600'>
-              <span className='flex items-center gap-2'>
-                <FaTruck className='text-gray-400' />
-                <span>Delivery Fee</span>
-              </span>
-              <span className='font-medium'>
-                {delivery > 0 ? `৳${delivery}` : 'Free'}
-              </span>
-            </div>
-
-            {discount > 0 && (
+            {/* {discount > 0 && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
@@ -222,7 +179,7 @@ const CartDrawer = () => {
                 </span>
                 <span className='font-medium'>-৳{discount}</span>
               </motion.div>
-            )}
+            )} */}
 
             <div className='border-t border-gray-200 pt-4 flex justify-between items-center'>
               <div>

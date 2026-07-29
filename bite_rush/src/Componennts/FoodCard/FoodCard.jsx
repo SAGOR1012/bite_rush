@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 // Import the Plus icon from react-icons library
 import { FaPlus } from 'react-icons/fa';
 
+// const FoodCard = ({ food, index, onAddToCart }) => {
 const FoodCard = ({ food, index }) => {
+  // const handleAddToCart = () => {
+  //   onAddToCart(food);
+  // };
   return (
     // Main card container wrapped with motion
     <motion.div
@@ -60,7 +64,7 @@ const FoodCard = ({ food, index }) => {
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className='w-12 h-12 rounded-2xl bg-[var(--primary)] text-white flex items-center justify-center transition'>
+            className='w-12 h-12 rounded-2xl bg-[var(--primary)] text-white flex items-center justify-center transition cursor-pointer'>
             <FaPlus />
           </motion.button>
         </div>

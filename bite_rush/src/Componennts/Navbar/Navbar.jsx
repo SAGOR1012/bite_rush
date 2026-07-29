@@ -113,14 +113,14 @@ import { NavLink, Link } from 'react-router-dom';
 import {
   FaShoppingCart,
   FaHome,
-  FaMapMarkerAlt,
+  // FaMapMarkerAlt,
   FaInfoCircle,
   FaClipboardList,
 } from 'react-icons/fa';
 
 const Navbar = ({ cartCount = 0, onCartClick }) => {
   const navItems = [
-    { name: 'Track Order', path: '/track' },
+    // { name: 'Checkoup', path: '/track' },
     { name: 'Cart', path: '/cart' },
     { name: 'Checkout', path: '/checkout' },
     { name: 'About', path: '/about' },
@@ -130,7 +130,7 @@ const Navbar = ({ cartCount = 0, onCartClick }) => {
   // নিচের বটম নেভবারের জন্য আইকনসহ আইটেম
   const bottomNavItems = [
     { name: 'Home', path: '/', icon: FaHome },
-    { name: 'Track', path: '/track', icon: FaMapMarkerAlt },
+    // { name: 'Track', path: '/track', icon: FaMapMarkerAlt },
     { name: 'Cart', path: '/cart', icon: FaShoppingCart, badge: cartCount },
     { name: 'About', path: '/about', icon: FaInfoCircle },
     { name: 'Orders', path: '/orderTable', icon: FaClipboardList },
