@@ -4,10 +4,11 @@ import { motion } from 'framer-motion';
 import { FaPlus } from 'react-icons/fa';
 
 // const FoodCard = ({ food, index, onAddToCart }) => {
-const FoodCard = ({ food, index }) => {
+const FoodCard = ({ food, index, onAddToCart }) => {
   // const handleAddToCart = () => {
   //   onAddToCart(food);
   // };
+
   return (
     // Main card container wrapped with motion
     <motion.div
@@ -62,6 +63,8 @@ const FoodCard = ({ food, index }) => {
 
           {/* Add to cart button with motion effect */}
           <motion.button
+            // onClick={() => console.log(`Add ${food.name} to cart`)}
+            onClick={() => onAddToCart(food)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className='w-12 h-12 rounded-2xl bg-[var(--primary)] text-white flex items-center justify-center transition cursor-pointer'>

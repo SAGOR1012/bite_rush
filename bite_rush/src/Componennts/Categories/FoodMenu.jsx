@@ -22,15 +22,19 @@ const categories = [
   { name: 'Desserts', icon: <FaIceCream /> },
   { name: 'Combo', icon: <FaGift /> },
 ];
-/* url */
+
 const baseURL = import.meta.env.VITE_API_BASEURL;
 
 const FoodMenu = () => {
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const [activeCategory, setActiveCategory] = useState('All');
 
-  /* Fetch Foods data form database  */
+  // Cart state
+  const [cart, setCart] = useState([]);
+
+  /* Fetch Foods data from database */
   useEffect(() => {
     fetch(`${baseURL}/all_foods`)
       .then((res) => res.json())
@@ -52,10 +56,85 @@ const FoodMenu = () => {
   if (loading) {
     return (
       <div className='flex justify-center items-center h-[60vh]'>
-        <span className='loading loading-spinner loading-lg text-[var(--primary)]'></span>
+        <span className='loading loading-spinner loading-lg text-[var(--primary)]'>
+          loading....
+        </span>
       </div>
     );
   }
+
+  // =========================
+  // Add Food To Cart
+  // =========================
+  const handleAddToCart = async (food) => {
+    try {
+      // Check if food already exists in frontend cart
+      const existingFood = cart.find((item) => item._id === food._id);
+
+      let updatedCart;
+
+      // =========================
+      // If food already exists
+      // =========================
+      if (existingFood) {
+        updatedCart = cart.map((item) =>
+          item._id === food._id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item,
+        );
+      }
+
+      // =========================
+      // If food is new
+      // =========================
+      else {
+        updatedCart = [
+          ...cart,
+          {
+            ...food,
+            quantity: 1,
+          },
+        ];
+      }
+
+      // Update frontend cart
+      setCart(updatedCart);
+
+      // =========================
+      // Send data to backend
+      // =========================
+      const cartItem = {
+        foodId: food._id,
+        name: food.name,
+        price: food.price,
+        image: food.image,
+        quantity: existingFood ? existingFood.quantity + 1 : 1,
+      };
+
+      const response = await fetch(`${baseURL}/carts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cartItem),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Cart added successfully:', data);
+      } else {
+        console.log('Failed to add cart:', data);
+      }
+    } catch (error) {
+      console.error('Add to cart error:', error);
+    }
+  };
+
+  console.log('Frontend Cart:', cart);
 
   return (
     <div className='min-h-screen'>
@@ -73,6 +152,7 @@ const FoodMenu = () => {
                     : 'bg-white border-gray-200 text-gray-700 hover:border-[var(--primary)] hover:text-[var(--primary)]'
                 }`}>
                 <span className='text-lg'>{item.icon}</span>
+
                 <span className='font-medium'>{item.name}</span>
               </button>
             ))}
@@ -87,6 +167,7 @@ const FoodMenu = () => {
                 key={food._id}
                 food={food}
                 index={index}
+                onAddToCart={handleAddToCart}
               />
             ))}
           </div>
