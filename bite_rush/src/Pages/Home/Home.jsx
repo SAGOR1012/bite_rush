@@ -5,20 +5,20 @@ import FoodMenu from '../../Componennts/Categories/FoodMenu';
 import Search_box from '../../Componennts/Search_box/Search_box';
 
 const Home = () => {
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
   return (
     <div className=''>
       {/*  food carousel */}
-      {/* <FoodCarousel></FoodCarousel> */}
-      <FoodMenu
+      <FoodCarousel></FoodCarousel>
+      {/* <FoodMenu
         cartItems={cartItems}
         setCartItems={setCartItems}
-      />
-
+      /> */}
+      {/* 
       <CartDrawer
         cartItems={cartItems}
         setCartItems={setCartItems}
-      />
+      /> */}
       {/* 
       Menu */}
       <div className='px-2 flex-row md:gap-10 lg:gap-20 justify-between items-center '>

@@ -30,6 +30,7 @@ const FoodMenu = () => {
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
 
+  /* Fetch Foods data form database  */
   useEffect(() => {
     fetch(`${baseURL}/all_foods`)
       .then((res) => res.json())
